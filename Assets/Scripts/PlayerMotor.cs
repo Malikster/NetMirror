@@ -52,7 +52,7 @@ public class PlayerMotor : MonoBehaviour
 
     void PerformRotation()
     {
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(rotation));
+        rb.MoveRotation(rb.rotation * Quaternion.Euler (rotation));
         if(cam != null)
         {
             cam.transform.Rotate(-cameraRotation);
