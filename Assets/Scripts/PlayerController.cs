@@ -1,6 +1,6 @@
 using UnityEngine;
 
-
+[RequireComponent(typeof(ConfigurableJoint))]
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour
 {
@@ -10,11 +10,26 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float lookSensitivity = 3f;
 
+    [SerializeField]
+    private float thrusterForce = 1000f;
+
+    [Header("Spring settings: ")]
+    /* [SerializeField]
+    private JointDriveMode jointMode = JointDriveMode.Position; */
+    [SerializeField]
+    private float jointSpring = 20f;
+    [SerializeField]
+    private float jointMaxForce = 40f;
+
     private PlayerMotor motor;
+    private ConfigurableJoint joint;
     // Start is called before the first frame update
     void Start()
     {
         motor = GetComponent<PlayerMotor>();
+        joint = GetComponent<ConfigurableJoint>();
+
+        SetJointSettings (jointSpring);
     }
 
     // Update is called once per frame
@@ -49,6 +64,31 @@ public class PlayerController : MonoBehaviour
         //Apply rotation
         motor.RotateCamera(_cameraRotation);
 
+        //Calculate Thruster Force as a 3d Vector
+        Vector3 _thrusterForce = Vector3.zero;
+        if (Input.GetButton("Jump"))
+        {
+            _thrusterForce = Vector3.up * thrusterForce;
+            SetJointSettings(0f);
+        }
+        else 
+        {
+            SetJointSettings(jointSpring);
+        }
 
+        //Apply the thruster force
+        motor.ApplyThruster(_thrusterForce);
+
+        
     }
+
+    private void SetJointSettings (float _jointSpring)
+        {
+            joint.yDrive = new JointDrive
+            { 
+                //mode = jointMode, 
+                positionSpring = _jointSpring,
+                maximumForce = jointMaxForce
+            };
+        }
 }
