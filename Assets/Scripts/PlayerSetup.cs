@@ -1,42 +1,71 @@
+//-------------------------------------
+// Responsible for setting up the player.
+// This includes adding/removing him correctly on the network.
+//-------------------------------------
+
 using UnityEngine;
 using Mirror;
-public class PlayerSetup : NetworkBehaviour
-{
-    [SerializeField]
-    Behaviour[] componentsToDisable;
 
-    Camera sceneCamera;
-    // Start is called before the first frame update
-    void Start()
-    {
-        if(!isLocalPlayer)
-        {
-            for (int i=0;i<componentsToDisable.Length; i++)
-            {
-                componentsToDisable[i].enabled = false;
+public class PlayerSetup : NetworkBehaviour {
+
+	[SerializeField]
+	Behaviour[] componentsToDisable;
+
+	[SerializeField]
+	string remoteLayerName = "RemotePlayer";
+
+	Camera sceneCamera;
+
+	void Start ()
+	{
+		// Disable components that should only be
+		// active on the player that we control
+		if (!isLocalPlayer)
+		{
+			DisableComponents();
+			AssignRemoteLayer();
+		}
+		else
+		{
+			// We are the local player: Disable the scene camera
+			sceneCamera = Camera.main;
+			if (sceneCamera != null)
+			{
+				sceneCamera.gameObject.SetActive(false);
             }
-        } 
-        else 
-        {
-            sceneCamera = Camera.main;
-            if(sceneCamera != null)
-            {
-                sceneCamera.gameObject.SetActive(false);
-            }
-        }
-    }
+		}
 
-    void OnDisable()
-    {
-        if(sceneCamera != null)
-        {
-            sceneCamera.gameObject.SetActive(true);
-        }
-    }
+		RegisterPlayer();
 
-    // Update is called once per frame
-   /*  void Update()
-    {
-        
-    } */
+	}
+
+	void RegisterPlayer ()
+	{
+		string _ID = "Player " + GetComponent<NetworkIdentity>().netId;
+		transform.name = _ID;
+	}
+
+	void AssignRemoteLayer ()
+	{
+		gameObject.layer = LayerMask.NameToLayer(remoteLayerName);
+	}
+
+	void DisableComponents ()
+	{
+		for (int i = 0; i < componentsToDisable.Length; i++)
+		{
+			componentsToDisable[i].enabled = false;
+		}
+	}
+
+	// When we are destroyed
+	void OnDisable ()
+	{
+		// Re-enable the scene camera
+		if (sceneCamera != null)
+		{
+			sceneCamera.gameObject.SetActive(true);
+		}
+	}
+
 }

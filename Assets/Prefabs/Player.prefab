@@ -18,9 +18,10 @@ GameObject:
   - component: {fileID: -1153363522174098129}
   - component: {fileID: -3355911038051269024}
   - component: {fileID: 3751825756178031194}
-  m_Layer: 0
+  - component: {fileID: -7688100600597188702}
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,6 +172,7 @@ MonoBehaviour:
   - {fileID: 7269477009060763851}
   - {fileID: 4950327540453237057}
   - {fileID: 390172993637940011}
+  remoteLayerName: RemotePlayer
 --- !u!114 &-3355911038051269024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +220,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0, y: 0.3, z: 0}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2
@@ -302,6 +304,28 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &-7688100600597188702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347412133451512984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8b023e83caea748bd33bd779b6c15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  weapon:
+    name: Glock
+    damage: 10
+    range: 100
+  cam: {fileID: 4950327540453237057}
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &4350200053553848572
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +337,7 @@ GameObject:
   - component: {fileID: 2216392655203957624}
   - component: {fileID: 4950327540453237057}
   - component: {fileID: 390172993637940011}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +422,7 @@ GameObject:
   - component: {fileID: 4869569398570086298}
   - component: {fileID: 6681136226390037123}
   - component: {fileID: 1113092842152145729}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,7 +516,7 @@ GameObject:
   - component: {fileID: 7614432477664765419}
   - component: {fileID: 413481449434932253}
   - component: {fileID: 3781604972837734006}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,7 +595,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6855802803665107135}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +627,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5054549804703192413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -637,7 +661,7 @@ GameObject:
   - component: {fileID: 266667912309319176}
   - component: {fileID: 6183050458515680335}
   - component: {fileID: 1776452672816504369}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
