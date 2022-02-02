@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 4950327540453237057}
+  cameraRotationLimit: 85
 --- !u!114 &-1153363522174098129
 MonoBehaviour:
   m_ObjectHideFlags: 0
