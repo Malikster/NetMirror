@@ -1,26 +1,29 @@
-using Mirror;
 using UnityEngine;
+using Mirror;
 
+public class Player : NetworkBehaviour {
 
-public class Player : NetworkBehaviour
-{
     [SerializeField]
-    float speedModifier = 0.1f;
-    void HandleMovement()
+    private int maxHealth = 100;
+
+    [SyncVar]
+    private int currentHealth;
+
+    void Awake ()
     {
-        if(isLocalPlayer)
-        {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-            Vector3 movement = new Vector3(moveHorizontal * speedModifier, moveVertical * speedModifier, 0);
-            transform.position = transform.position + movement;
-        }
+        SetDefaults();
     }
 
-    void Update()
+    public void TakeDamage (int _amount)
     {
-        HandleMovement();
+        currentHealth -= _amount;
+
+        Debug.Log(transform.name + " now has " + currentHealth + " health.");
     }
 
+    public void SetDefaults ()
+    {
+        currentHealth = maxHealth;
+    }
 
 }
