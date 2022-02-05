@@ -189,6 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913d6db1fc0645e48a27b7bb620d55f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  matchSettings:
+    respawnTime: 3
 --- !u!4 &524766274
 Transform:
   m_ObjectHideFlags: 0
@@ -469,7 +471,7 @@ MonoBehaviour:
   offlineScene: 
   onlineScene: 
   transport: {fileID: 941117947}
-  networkAddress: localhost
+  networkAddress: 5.14.111.25
   maxConnections: 4
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 2347412133451512984, guid: 513cd1e2a19291749b46153296c83a07, type: 3}
