@@ -4,8 +4,9 @@ Multiplayer FPS in Unity
 Based on:
 - Making a Multiplayer FPS in Unity - a tutorial by Brakeys. 
     Watch the videos [HERE](https://www.youtube.com/playlist?list=PLPV2KyIb3jR5PhGqsO7G4PsbEC_Al-kPZ).
-- How to Build a Multiplayer Game with Unity + Mirror - a tutorial by Shrine
+- How to Build a Multiplayer Game with Unity + Mirror - a tutorial by Shrine.
     Watch the videos [HERE](https://www.youtube.com/watch?v=8VVgIjWBXks&t=668s).
+
 (the second tutorial is for replacing the deprecated [Unity Network system](https://docs.unity3d.com/Manual/UNet.html) with [Mirror Networking system](https://mirror-networking.com/))
 
 ###Software
